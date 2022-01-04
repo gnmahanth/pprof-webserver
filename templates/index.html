@@ -1,0 +1,88 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<style>
+  html,
+  body {
+    height: 100%;
+    overflow: hidden;
+  }
+
+  ul {
+    line-height: 1.5;
+    list-style-type: none;
+    padding: 5px;
+    text-align: left;
+  }
+
+  .row {
+    display: flex;
+    height: 100%;
+  }
+
+  .column {
+    float: left;
+    padding: 10px;
+    width: 20%;
+    overflow: auto;
+  }
+
+  .responsive-iframe {
+    height: 100%;
+    width: 100%;
+    border: 0;
+  }
+
+  .inputform {
+    padding: 5px;
+    border: 1px;
+    border-style: solid;
+    border-color: gray;
+  }
+
+  .delete {
+    background-color: white;
+    border: 0;
+    color: red;
+    padding: 2px 2px;
+    text-align: center;
+    font-size: 15px;
+  }
+</style>
+
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>pprof-server</title>
+  <base href=window.location.origin>
+</head>
+
+<body>
+
+  <div class="row">
+    <div class="column">
+      <div class="inputform">
+        <form enctype="multipart/form-data" action="/upload" method="post">
+          <input type="file" name="inputfile" />
+          <input type="submit" value="upload" />
+        </form>
+      </div>
+      <div>
+        <ul>
+          {{range .Files}}
+          <li>
+            <button class=delete onclick="location.href='/remove/{{ . }}'" type="button">x</button>
+            <a href="/pprof/{{ . }}/flamegraph" target="pprof-frame">{{ . }}</a>
+          </li>
+          {{end}}
+        </ul>
+      </div>
+    </div>
+    <div class="" style="width:100%">
+      <iframe name="pprof-frame" class="responsive-iframe" src="about:blank" title="pprof"></iframe>
+    </div>
+  </div>
+
+</body>
+
+</html>
