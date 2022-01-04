@@ -1,5 +1,5 @@
 # pprof-webserver
-simple wrapper for google/pprof to run as webserver 
+simple wrapper for [google/pprof](https://github.com/google/pprof) to run as webserver 
 
 - left column shows list of profiles stored on the server 
 - new profiles can be uploaded using dialog box on the top left 
