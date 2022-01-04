@@ -45,4 +45,4 @@ docker run -it -p 8080:8080 pprof-server:v1
 ```
 
 ## Security 
-Current implementation does not have kind of auth implementation, if you are deploying to the internet use a reverse proxy to secure to endpoint.
+Current implementation does not have kind of auth implementation, if you are deploying to the internet use a reverse proxy to secure the endpoint.
