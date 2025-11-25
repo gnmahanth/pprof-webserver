@@ -164,6 +164,12 @@ func (s *fileServer) handleUpload(w http.ResponseWriter, r *http.Request) {
 
 func (s *fileServer) handleRemove(w http.ResponseWriter, r *http.Request) {
 	file, _ := parsePath(r.URL.Path, "/remove/")
+	// Validate: disallow path separators or ".." in file name
+	if strings.Contains(file, "/") || strings.Contains(file, "\\") || strings.Contains(file, "..") {
+		http.Error(w, "Invalid file name", http.StatusBadRequest)
+		log.Warnf("attempted deletion with invalid filename: %q", file)
+		return
+	}
 	removefile := path.Join(s.directory, file)
 	log.Infof("removing file %s", removefile)
 	if err := os.Remove(removefile); err != nil {
