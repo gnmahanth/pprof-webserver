@@ -5,7 +5,6 @@ import (
 	"flag"
 	"fmt"
 	"io"
-	"io/ioutil"
 	"net/http"
 	"os"
 	"path"
@@ -63,7 +62,7 @@ func listfiles(d string) []string {
 		}
 	}
 	l := []string{}
-	files, err := ioutil.ReadDir(d)
+	files, err := os.ReadDir(d)
 	if err != nil {
 		log.Error(err)
 		return l
