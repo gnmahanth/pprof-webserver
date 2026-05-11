@@ -6,7 +6,7 @@ toolchain go1.24.10
 
 require (
 	github.com/google/pprof v0.0.0-20251114195745-4902fdda35c8
-	github.com/sirupsen/logrus v1.9.3
+	github.com/sirupsen/logrus v1.9.4
 )
 
 require (
